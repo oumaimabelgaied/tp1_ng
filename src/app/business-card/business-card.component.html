@@ -1,0 +1,54 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Formulaire -->
+    <div class="col-md-4">
+      <h4>Informations de la carte</h4>
+      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.nom" placeholder="Nom">
+      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.prenom" placeholder="Prénom">
+      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.job" placeholder="Profession">
+      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.imageFilename" placeholder="Nom du fichier image (ex: oumaima.jpg)">
+      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.citation" placeholder="Citation">
+      <textarea class="form-control mb-2" rows="3" [(ngModel)]="cardData.description" placeholder="Description"></textarea>
+      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.motsCles" placeholder="Mots-clés">
+    </div>
+
+    <!-- Carte rotative au hover -->
+    <div class="col-md-8 d-flex justify-content-center">
+      <div class="card-container">
+        <div class="card">
+
+          <!-- Face avant -->
+          <div class="front card text-center">
+            <div class="cover">
+              <img *ngIf="imageUrl; else placeholder" [src]="imageUrl" alt="Cover" class="card-img-top">
+              <ng-template #placeholder>
+                <div class="card-img-top" style="height:180px; background:#eee;"></div>
+              </ng-template>
+            </div>
+            <div class="user mt-n5">
+              <img *ngIf="imageUrl; else placeholderUser" [src]="imageUrl" class="rounded-circle border border-white" width="80" height="80">
+              <ng-template #placeholderUser>
+                <div class="rounded-circle border border-white" style="width:80px; height:80px; background:#ccc;"></div>
+              </ng-template>
+            </div>
+            <div class="card-body">
+              <h4>{{ cardData.nom }} {{ cardData.prenom }}</h4>
+              <h6 class="text-muted">{{ cardData.job }}</h6>
+              <p><em>{{ cardData.citation }}</em></p>
+            </div>
+          </div>
+
+          <!-- Face arrière -->
+          <div class="back card text-center">
+            <div class="card-body">
+              <h5>À propos</h5>
+              <p>{{ cardData.description }}</p>
+              <p><strong>Mots-clés :</strong> {{ cardData.motsCles }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

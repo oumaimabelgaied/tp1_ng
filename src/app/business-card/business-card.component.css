@@ -1,0 +1,53 @@
+.card-container {
+  perspective: 1200px; /* Perspective plus grande pour un effet 3D plus réaliste */
+}
+
+.card {
+  width: 300px;
+  height: 420px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); /* plus fluide */
+  position: relative;
+  will-change: transform; /* optimise la performance */
+}
+
+.card-container:hover .card {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back */
+.card .front, .card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* ombre plus douce et réaliste */
+  overflow: hidden;
+}
+
+/* Back */
+.card .back {
+  transform: rotateY(180deg);
+  background: #f7f7f7;
+}
+
+/* Images */
+.cover img.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.user img {
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+/* Optionnel : léger zoom sur l'image au hover */
+.card-container:hover .cover img.card-img-top {
+  transform: scale(1.03);
+}
+
+.card-container:hover .user img {
+  transform: scale(1.05);
+}

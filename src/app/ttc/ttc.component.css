@@ -1,0 +1,23 @@
+.ttc-container {
+  width: 300px;
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.ttc-container div {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  font-size: 1em;
+}
+
+.result {
+  margin-top: 15px;
+  font-size: 1.2em;
+  color: #007bff;
+}

@@ -1,0 +1,14 @@
+<div 
+  #myDiv
+  [style.backgroundColor]="divColor"
+  style="width:200px; height:100px; border:1px solid black; margin-bottom:10px;">
+</div>
+
+<input 
+  #colorInput 
+  type="text" 
+  placeholder="Entrez une couleur"
+  (input)="divColor = colorInput.value"
+/>
+
+<button (click)="resetColor(myDiv)">Reset</button>

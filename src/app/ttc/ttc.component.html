@@ -1,0 +1,37 @@
+<div class="ttc-container">
+  <h2>Calculateur de Prix TTC</h2>
+
+  <div>
+    <label>Prix unitaire :</label>
+    <input type="number" [(ngModel)]="price" (input)="calculateTTC()">
+  </div>
+
+  <div>
+    <label>Quantité :</label>
+    <input type="number" [(ngModel)]="quantity" (input)="calculateTTC()">
+  </div>
+
+  <div>
+    <label>TVA (%) :</label>
+    <input type="number" [(ngModel)]="tva" (input)="calculateTTC()">
+  </div>
+
+  <hr>
+
+  <div>
+    <strong>Prix total avant remise : {{ totalBeforeDiscount | number:'1.2-2' }} €</strong>
+  </div>
+
+  <div>
+    <strong>Remise appliquée : {{ discount | number:'1.2-2' }} €</strong>
+    <span *ngIf="discount === 0">(Aucune remise)</span>
+  </div>
+
+  <div>
+    <strong>Prix total TTC : {{ ttc | number:'1.2-2' }} €</strong>
+  </div>
+
+  <div>
+    <strong>Prix unitaire TTC : {{ unitTTC | number:'1.2-2' }} €</strong>
+  </div>
+</div>
