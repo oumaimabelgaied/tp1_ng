@@ -1,54 +1,117 @@
-<div class="container mt-4">
+<div class="container mt-5">
   <div class="row">
-    <!-- Formulaire -->
-    <div class="col-md-4">
-      <h4>Informations de la carte</h4>
-      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.nom" placeholder="Nom">
-      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.prenom" placeholder="Prénom">
-      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.job" placeholder="Profession">
-      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.imageFilename" placeholder="Nom du fichier image (ex: oumaima.jpg)">
-      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.citation" placeholder="Citation">
-      <textarea class="form-control mb-2" rows="3" [(ngModel)]="cardData.description" placeholder="Description"></textarea>
-      <input type="text" class="form-control mb-2" [(ngModel)]="cardData.motsCles" placeholder="Mots-clés">
-    </div>
 
-    <!-- Carte rotative au hover -->
-    <div class="col-md-8 d-flex justify-content-center">
+    <!-- FORMULAIRE -->
+    <div class="col-md-5">
+      <h3>Informations</h3>
+
+      <form>
+        <div class="mb-3">
+          <label>Nom</label>
+          <input type="text" class="form-control" [(ngModel)]="cardData.nom" name="nom">
+        </div>
+
+        <div class="mb-3">
+          <label>Prénom</label>
+          <input type="text" class="form-control" [(ngModel)]="cardData.prenom" name="prenom">
+        </div>
+
+        <div class="mb-3">
+          <label>Job</label>
+          <input type="text" class="form-control" [(ngModel)]="cardData.job" name="job">
+        </div>
+
+        <div class="mb-3">
+          <label>Nom du fichier image (avatar)</label>
+          <input type="text" class="form-control" [(ngModel)]="cardData.imageFilename" name="imageFilename">
+        </div>
+
+        <div class="mb-3">
+          <label>Citation / Motto</label>
+          <input type="text" class="form-control" [(ngModel)]="cardData.citation" name="citation">
+        </div>
+
+        <div class="mb-3">
+          <label>Description / Job Description</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="cardData.description" name="description"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label>Mots clés</label>
+          <input type="text" class="form-control" [(ngModel)]="cardData.motsCles" name="motsCles">
+        </div>
+      </form>
+    </div>
+    
+
+    <!-- CARTE ROTATIVE -->
+    <div class="col-md-7 d-flex justify-content-center">
+
       <div class="card-container">
         <div class="card">
 
-          <!-- Face avant -->
-          <div class="front card text-center">
+          <!-- FRONT -->
+          <div class="front">
             <div class="cover">
-              <img *ngIf="imageUrl; else placeholder" [src]="imageUrl" alt="Cover" class="card-img-top">
-              <ng-template #placeholder>
-                <div class="card-img-top" style="height:180px; background:#eee;"></div>
-              </ng-template>
+              <img [src]="'assets/images/cover1.jpg'" alt="Cover" />
             </div>
-            <div class="user mt-n5">
-              <img *ngIf="imageUrl; else placeholderUser" [src]="imageUrl" class="rounded-circle border border-white" width="80" height="80">
-              <ng-template #placeholderUser>
-                <div class="rounded-circle border border-white" style="width:80px; height:80px; background:#ccc;"></div>
-              </ng-template>
+            <div class="user">
+              <img class="img-circle" [src]="imageUrl" alt="Profile" />
             </div>
-            <div class="card-body">
-              <h4>{{ cardData.nom }} {{ cardData.prenom }}</h4>
-              <h6 class="text-muted">{{ cardData.job }}</h6>
-              <p><em>{{ cardData.citation }}</em></p>
+            <div class="content">
+              <div class="main">
+                <h3 class="name">{{ cardData.prenom }} {{ cardData.nom }} </h3>
+                <p class="profession">{{ cardData.job }}</p>
+                <p class="text-center">{{ cardData.citation }}</p>
+              </div>
+              <div class="footer">
+                <div class="rating">
+                  <i class="fa fa-mail-forward"></i> Auto Rotation
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Face arrière -->
-          <div class="back card text-center">
-            <div class="card-body">
-              <h5>À propos</h5>
-              <p>{{ cardData.description }}</p>
-              <p><strong>Mots-clés :</strong> {{ cardData.motsCles }}</p>
+          <!-- BACK -->
+          <div class="back">
+            <div class="header">
+              <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+            </div>
+            <div class="content">
+              <div class="main">
+                <h5 class="text-center">{{ cardData.description }}</h5>
+                <p class="text-center">{{ cardData.motsCles}}</p>
+
+                <div class="stats-container">
+                  <div class="stats">
+                    <h4>235</h4>
+                    <p>Followers</p>
+                  </div>
+                  <div class="stats">
+                    <h4>114</h4>
+                    <p>Following</p>
+                  </div>
+                  <div class="stats">
+                    <h4>35</h4>
+                    <p>Projects</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="footer">
+              <div class="social-links text-center">
+                <a href="https://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                <a href="https://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                <a href="https://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
+
     </div>
+
   </div>
 </div>

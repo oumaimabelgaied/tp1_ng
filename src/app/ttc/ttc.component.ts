@@ -1,43 +1,37 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { Component, signal, computed } from '@angular/core';
 
 @Component({
   selector: 'app-ttc',
   standalone: true,
-  imports: [FormsModule, CommonModule],
   templateUrl: './ttc.component.html',
   styleUrls: ['./ttc.component.css']
 })
 export class TtcComponent {
-  quantity: number = 1;
-  price: number = 0;
-  tva: number = 18;
+  price = signal(0);
+  quantity = signal(1);
+  tva = signal(18);
 
-  totalBeforeDiscount: number = 0; 
-  discount: number = 0;            
-  ttc: number = 0;                 
-  unitTTC: number = 0;           
+  totalBeforeDiscount = computed(() => this.price() * this.quantity());
 
-  calculateTTC(): void {
-    // Prix total avant remise
-    this.totalBeforeDiscount = this.price * this.quantity;
+  
+  discountHT= computed(() => {
+    const q = this.quantity();
+    const total=this.totalBeforeDiscount()
+    if (q > 10 && q <= 15) return total * 0.20;
+    if (q > 15) return total* 0.30;
+    return 0;
+  });
 
-    // Appliquer la remise
-    let totalAfterDiscount = this.totalBeforeDiscount;
-    if (this.quantity > 10 && this.quantity <= 15) {
-      totalAfterDiscount *= 0.8;
-    } else if (this.quantity > 15) {
-      totalAfterDiscount *= 0.7;
-    }
+   // prix unitaire TTC avant remise (prix * (1 + tva))
+  unitTTCBefore = computed(() => this.price() * (1 + this.tva() / 100));
 
-   
-    this.discount = this.totalBeforeDiscount - totalAfterDiscount;
 
-    
-    this.ttc = totalAfterDiscount * (1 + this.tva / 100);
+  // remise  TTC
+  discountTTC = computed(() => this.discountHT() * (1 + this.tva() / 100));
 
-    
-    this.unitTTC = this.ttc / this.quantity;
-  }
+
+  // total TTC après remise
+  ttc = computed(() => (this.totalBeforeDiscount() - this.discountHT()) * (1 + this.tva() / 100));
+
+ 
 }

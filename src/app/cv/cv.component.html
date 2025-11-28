@@ -1,0 +1,10 @@
+
+<div class="cv-container">
+  <app-liste 
+    [cvList]="cvList()" 
+    [selectedCvId]="selectedCv()?.id ?? null"
+    (cvSelected)="onSelectCv($event)" 
+  />
+  
+  <app-detail [cv]="selectedCv()" />
+</div>

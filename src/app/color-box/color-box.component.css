@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;    /* horizontal centering */
+  justify-content: center; /* vertical centering */
+  height: 100vh;           /* full viewport height */
+  gap: 10px;               /* space between elements */
+}

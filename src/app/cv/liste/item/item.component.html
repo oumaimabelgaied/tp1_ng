@@ -1,0 +1,15 @@
+<div 
+  class="item-container" 
+  [class.selected]="isSelected()"
+  (click)="onClick()"
+>
+  <img 
+    [src]="cv().path" 
+    [alt]="cv().firstname + ' ' + cv().name"
+    class="item-avatar"
+  />
+  <div class="item-info">
+    <h3 class="item-name">{{ cv().firstname }} {{ cv().name }}</h3>
+    <p class="item-job">{{ cv().job }}</p>
+  </div>
+</div>

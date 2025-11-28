@@ -1,0 +1,15 @@
+<div class="liste-container">
+  <h2 class="liste-title">Liste des CVs</h2>
+  
+  <div class="cv-list">
+    @for (cv of cvList(); track cv.id) {
+      <app-item 
+        [cv]="cv" 
+        [isSelected]="cv.id === selectedCvId()"
+        (itemClicked)="onCvClick(cv)" 
+      />
+    } @empty {
+      <p class="empty-message">Aucun CV disponible</p>
+    }
+  </div>
+</div>

@@ -1,24 +1,21 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-color-box',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './color-box.component.html',
   styleUrl: './color-box.component.css'
 })
+
 export class ColorBoxComponent {
-  divColor: string = 'lightgray'; 
+  defaultColor = 'lightgray';
+  divColor = this.defaultColor;
 
-  // méthode pour remettre la couleur par défaut
-  resetColor(div: HTMLDivElement) {
-    this.divColor = 'lightgray';
-    div.style.backgroundColor = this.divColor;
+  // reset
+  resetColor(myDiv: HTMLDivElement , colorInput : HTMLInputElement) {
+    colorInput.value = '';
+    this.divColor = this.defaultColor;
+    myDiv.style.backgroundColor = this.defaultColor; 
   }
-
-  // On va binder le changement de l'input avec un event binding
-  changeColor(event: Event) {
-    const input = event.target as HTMLInputElement;
-    this.divColor = input.value;
-  }
-
 }

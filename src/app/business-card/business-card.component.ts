@@ -22,20 +22,22 @@ export interface CardData {
   styleUrl: './business-card.component.css'
 })
 export class BusinessCardComponent {
-   cardData: CardData = {
-    nom: 'Votre Nom',
-    prenom: 'Votre Prénom',
-    job: 'Votre Profession',
-    imageFilename: '',
-    citation: 'Votre citation favorite',
-    description: 'Décrivez votre travail',
-    motsCles: 'key words'
-  };
+  cardData: CardData = {
+  nom: '',
+  prenom: '',
+  job: '',
+  imageFilename: '',
+  citation: '',
+  description: '',
+  motsCles: ''
+};
+
 
  
-  get imageUrl(): string | null {
-    return this.cardData.imageFilename
-      ? `assets/${this.cardData.imageFilename}` 
-      : null; 
-  }
+ get imageUrl(): string {
+  return this.cardData.imageFilename
+    ? `assets/images/${this.cardData.imageFilename}`
+    : 'assets/images/default-avatar.jpg';
+}
+
 }

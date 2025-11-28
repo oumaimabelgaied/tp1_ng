@@ -3,35 +3,27 @@
 
   <div>
     <label>Prix unitaire :</label>
-    <input type="number" [(ngModel)]="price" (input)="calculateTTC()">
+    <input type="number" [value]="price()" (input)="price.set($any($event.target).valueAsNumber)">
   </div>
 
   <div>
     <label>Quantité :</label>
-    <input type="number" [(ngModel)]="quantity" (input)="calculateTTC()">
+    <input type="number" [value]="quantity()" (input)="quantity.set($any($event.target).valueAsNumber)">
   </div>
 
   <div>
     <label>TVA (%) :</label>
-    <input type="number" [(ngModel)]="tva" (input)="calculateTTC()">
+    <input type="number" [value]="tva()" (input)="tva.set($any($event.target).valueAsNumber)">
   </div>
 
   <hr>
 
-  <div>
-    <strong>Prix total avant remise : {{ totalBeforeDiscount | number:'1.2-2' }} €</strong>
-  </div>
+  <p><strong>Prix unitaire TTC (avant remise) :</strong> {{ unitTTCBefore()}} €</p>
 
-  <div>
-    <strong>Remise appliquée : {{ discount | number:'1.2-2' }} €</strong>
-    <span *ngIf="discount === 0">(Aucune remise)</span>
-  </div>
+  <p><strong>Remise appliquée (TTC) :</strong> {{ discountTTC() }} €</p>
 
-  <div>
-    <strong>Prix total TTC : {{ ttc | number:'1.2-2' }} €</strong>
-  </div>
+  <p><strong>Total TTC après remise :</strong> {{ ttc() }} €</p>
 
-  <div>
-    <strong>Prix unitaire TTC : {{ unitTTC | number:'1.2-2' }} €</strong>
-  </div>
+ 
+ 
 </div>

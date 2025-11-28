@@ -1,0 +1,53 @@
+<div class="detail-container">
+  <h2 class="detail-title">Détail du CV</h2>
+  
+  @if (cv(); as selectedCv) {
+    <div class="detail-content">
+      <div class="detail-header">
+        <img 
+          [src]="selectedCv.path" 
+          [alt]="selectedCv.firstname + ' ' + selectedCv.name"
+          class="detail-avatar"
+        />
+        <h3 class="detail-name">{{ selectedCv.firstname }} {{ selectedCv.name }}</h3>
+        <p class="detail-job">{{ selectedCv.job }}</p>
+      </div>
+
+      <div class="detail-info">
+        <div class="info-item">
+          <span class="info-label">ID</span>
+          <span class="info-value">{{ selectedCv.id }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Nom</span>
+          <span class="info-value">{{ selectedCv.name }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Prénom</span>
+          <span class="info-value">{{ selectedCv.firstname }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Âge</span>
+          <span class="info-value">{{ selectedCv.age }} ans</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">CIN</span>
+          <span class="info-value">{{ selectedCv.cin }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Poste</span>
+          <span class="info-value">{{ selectedCv.job }}</span>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="empty-state">
+      <p>Sélectionnez un CV pour voir les détails</p>
+    </div>
+  }
+</div>
