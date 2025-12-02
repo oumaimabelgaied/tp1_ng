@@ -1,0 +1,72 @@
+<div class="detail-full-page">
+  @if (loading) {
+  <p>Chargement...</p>
+  } @else if (cv) {
+  <div class="detail-container">
+    <button class="btn btn-back" (click)="goBack()">← Retour</button>
+
+    <div class="detail-content">
+      <div class="detail-header">
+        <img
+          [src]="cv.path"
+          [alt]="cv.firstname + ' ' + cv.name"
+          class="detail-avatar"
+        />
+        <h1>{{ cv.firstname }} {{ cv.name }}</h1>
+        <p class="detail-job">{{ cv.job }}</p>
+      </div>
+
+      <div class="detail-info">
+        <div class="info-item">
+          <span class="info-label">ID</span>
+          <span class="info-value">{{ cv.id }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Nom</span>
+          <span class="info-value">{{ cv.name }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Prénom</span>
+          <span class="info-value">{{ cv.firstname }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Âge</span>
+          <span class="info-value">{{ cv.age }} ans</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">CIN</span>
+          <span class="info-value">{{ cv.cin }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Poste</span>
+          <span class="info-value">{{ cv.job }}</span>
+        </div>
+      </div>
+
+      <div class="detail-actions">
+        <button class="btn btn-danger" (click)="openDeleteModal()">
+          Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+  } @else {
+  <p>CV non trouvé</p>
+  }
+
+  <app-confirm-modal
+    [isOpen]="showDeleteModal"
+    title="Supprimer le CV"
+    [message]="
+      'Êtes-vous sûr de vouloir supprimer le CV de ' +
+      (cv?.firstname || '') +
+      ' ' +
+      (cv?.name || '') +
+      ' ?'
+    "
+    confirmText="Oui"
+    cancelText="Annuler"
+    (confirm)="onConfirmDelete()"
+    (cancel)="onCancelDelete()"
+  ></app-confirm-modal>
+</div>

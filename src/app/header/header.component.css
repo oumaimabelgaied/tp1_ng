@@ -1,0 +1,107 @@
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  margin: 0;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.app-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+  margin-right: 3rem;
+  letter-spacing: 0.5px;
+}
+
+.navbar {
+  flex: 1;
+  margin-left: 0;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  display: inline-block;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active::after {
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .app-logo {
+    margin-right: 0;
+    font-size: 1.2rem;
+  }
+
+  .navbar {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}

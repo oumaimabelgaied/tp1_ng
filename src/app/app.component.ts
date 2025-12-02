@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ColorBoxComponent } from './color-box/color-box.component';
-import { BusinessCardComponent } from './business-card/business-card.component';
-import { TtcComponent } from './ttc/ttc.component';
-import { CvComponent } from './cv/cv.component';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet ,
-     ColorBoxComponent ,
-      BusinessCardComponent, 
-      TtcComponent,
-      CvComponent],
+  standalone: true,
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'tp1_ng';

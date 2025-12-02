@@ -1,0 +1,102 @@
+<div class="login-container">
+  <div class="login-content">
+    <div class="header-section">
+      <p class="subtitle">Bienvenue pour</p>
+      <h1 class="title">Notre TP4 "Angular"</h1>
+      <div class="icon-container">
+        <svg
+          class="login-icon"
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="100" cy="70" r="30" fill="#667eea" />
+          <path
+            d="M 50 120 Q 100 150 150 120"
+            fill="none"
+            stroke="#667eea"
+            stroke-width="8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="form-section">
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-input"
+          [ngClass]="{ 'is-invalid': isEmailInvalid() }"
+          [(ngModel)]="email"
+          name="email"
+          (blur)="onEmailBlur()"
+          (focus)="onEmailFocus()"
+          placeholder="exemple@email.com"
+          [disabled]="isLoading()"
+        />
+        @if (isEmailInvalid()) {
+        <div class="error-message">
+          @if (email() === '') {
+          <span>L'email est obligatoire</span>
+          } @else {
+          <span>Veuillez entrer une adresse email valide</span>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="form-label">Mot de passe</label>
+        <div class="password-input-wrapper">
+          <input
+            [type]="showPassword() ? 'text' : 'password'"
+            id="password"
+            class="form-input"
+            [ngClass]="{ 'is-invalid': isPasswordInvalid() }"
+            [(ngModel)]="password"
+            name="password"
+            (blur)="onPasswordBlur()"
+            (focus)="onPasswordFocus()"
+            placeholder="••••••••"
+            [disabled]="isLoading()"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePasswordVisibility()"
+            [disabled]="isLoading()"
+          >
+            @if (showPassword()) {
+            <span class="eye-icon">👁️</span>
+            } @else {
+            <span class="eye-icon">👁️‍🗨️</span>
+            }
+          </button>
+        </div>
+        @if (isPasswordInvalid()) {
+        <div class="error-message">
+          @if (password() === '') {
+          <span>Le mot de passe est obligatoire</span>
+          } @else {
+          <span>Le mot de passe doit avoir au moins 4 caractères</span>
+          }
+        </div>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="submit-button"
+        [disabled]="!isFormValid() || isLoading()"
+      >
+        @if (isLoading()) {
+        <span class="spinner"></span>
+        } @else {
+        <span>Envoyer</span>
+        }
+      </button>
+    </form>
+  </div>
+</div>

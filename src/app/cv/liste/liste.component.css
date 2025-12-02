@@ -2,8 +2,9 @@
   background: #b2dfdb;
   padding: 1.5rem;
   border-radius: 8px;
-  height: 100%;
-  min-height: 400px;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .liste-title {
@@ -13,12 +14,40 @@
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 3px solid #00897b;
+  flex-shrink: 0;
 }
 
 .cv-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  padding-right: 0.5rem;
+}
+
+.cv-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cv-list::-webkit-scrollbar-track {
+  background: #80cbc4;
+  border-radius: 4px;
+}
+
+.cv-list::-webkit-scrollbar-thumb {
+  background: #00897b;
+  border-radius: 4px;
+}
+
+.cv-list::-webkit-scrollbar-thumb:hover {
+  background: #004d40;
+}
+
+.cv-list {
+  scrollbar-color: #00897b #80cbc4;
+  scrollbar-width: thin;
 }
 
 .empty-message {

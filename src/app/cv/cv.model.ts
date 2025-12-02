@@ -3,7 +3,7 @@ export interface Cv {
   name: string;
   firstname: string;
   age: number;
-  cin: string;
+  cin: number;
   job: string;
-  path: string; 
+  path: string;
 }

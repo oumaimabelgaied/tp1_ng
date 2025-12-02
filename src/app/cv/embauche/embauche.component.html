@@ -1,0 +1,16 @@
+<div class="embauche-container">
+  <h3 class="embauche-title">Liste des embauchés</h3>
+
+  @if (embaucheService.embauches().length > 0) {
+  <ul class="embauche-list">
+    @for (cv of embaucheService.embauches(); track cv.id) {
+    <li class="embauche-item">
+      <strong>{{ cv.firstname }} {{ cv.name }}</strong>
+      <span>{{ cv.job }}</span>
+    </li>
+    }
+  </ul>
+  } @else {
+  <p class="empty-message">Aucun CV embauché pour le moment.</p>
+  }
+</div>
