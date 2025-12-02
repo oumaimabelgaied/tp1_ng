@@ -1,5 +1,6 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, inject } from '@angular/core';
 import { Cv } from '../../cv.model';
+import { SelectionService } from '../../../services/selection.service';
 
 @Component({
   selector: 'app-item',
@@ -8,14 +9,15 @@ import { Cv } from '../../cv.model';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent {
-  // Signal inputs
+  
   cv = input.required<Cv>();
   isSelected = input<boolean>(false);
-  
-  // Signal output
-  itemClicked = output<Cv>();
+
+ 
+  private selectionService = inject(SelectionService);
 
   onClick() {
-    this.itemClicked.emit(this.cv());
+    
+    this.selectionService.select(this.cv());
   }
 }

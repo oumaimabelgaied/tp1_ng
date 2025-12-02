@@ -1,6 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, inject } from '@angular/core';
 import { ItemComponent } from './item/item.component';
 import { Cv } from '../cv.model';
+import { SelectionService } from '../../services/selection.service';
 
 @Component({
   selector: 'app-liste',
@@ -13,11 +14,12 @@ export class ListeComponent {
   // Signal inputs
   cvList = input.required<Cv[]>();
   selectedCvId = input<number | null>(null);
-  
-  // Signal output
-  cvSelected = output<Cv>();
 
+  // injection du service de sélection
+  private selectionService = inject(SelectionService);
+
+  // méthode appelée par le template si vous gardez (itemClicked)="onCvClick(cv)"
   onCvClick(cv: Cv) {
-    this.cvSelected.emit(cv);
+    this.selectionService.select(cv);
   }
 }
