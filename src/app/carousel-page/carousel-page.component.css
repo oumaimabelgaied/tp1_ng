@@ -1,94 +1,98 @@
-.carousel-page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Wrapper centers the component in the viewport */
+.carousel-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* subtle full-page background to make the carousel pop */
+  background: linear-gradient(180deg, #f5f7fb 0%, #e9eef8 60%);
+  padding: 24px;
+  box-sizing: border-box;
 }
 
-.page-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 3rem;
-}
-
-.carousel-section {
-  background-color: white;
-  border-radius: 12px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.section-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 3px solid #667eea;
-}
-
-.section-header h2 {
-  font-size: 1.5rem;
-  color: #333;
-  margin: 0;
-}
-
-.controls {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid #e0e0e0;
-}
-
-.control-group {
+/* Card look for the carousel area */
+.carousel-card {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,252,0.85));
+  box-shadow: 0 10px 30px rgba(17,24,39,0.12), 0 4px 12px rgba(17,24,39,0.06);
+  border: 1px solid rgba(16,24,40,0.04);
+  max-width: 95vw;
 }
 
-.control-group label {
-  font-weight: 600;
-  color: #333;
-  font-size: 0.95rem;
+/* Carousel box */
+.carousel {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.control-group input {
-  padding: 0.75rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+/* Image style + smooth transitions */
+.carousel-image {
+  display: block;
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  transition: transform 600ms cubic-bezier(.2,.9,.2,1), opacity 350ms ease-in-out;
+  will-change: transform, opacity;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(16,24,40,0.08);
 }
 
-.control-group input:focus {
+/* gentle scale on hover for nicer feel */
+.carousel:hover .carousel-image {
+  transform: scale(1.02);
+}
+
+/* Controls styling (inputs) */
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.control-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #334155;
+  gap: 6px;
+  min-width: 120px;
+}
+
+.control-item input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(16,24,40,0.08);
+  background: #fff;
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transition: box-shadow .15s ease, border-color .15s ease, transform .08s ease;
 }
 
-.current-value {
-  font-size: 0.85rem;
-  color: #999;
-  font-weight: 500;
+.control-item input:focus {
+  box-shadow: 0 6px 18px rgba(14,30,57,0.06);
+  border-color: rgba(59,130,246,0.35);
+  transform: translateY(-1px);
 }
 
-@media (max-width: 768px) {
-  .carousel-page-container {
-    padding: 1rem;
+/* Responsive: if width is very small, stack inputs */
+@media (max-width: 520px) {
+  .control-item {
+    min-width: 100%;
   }
-
-  .page-title {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
-
-  .carousel-section {
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .controls {
-    grid-template-columns: 1fr;
+  .carousel-card {
+    padding: 12px;
   }
 }

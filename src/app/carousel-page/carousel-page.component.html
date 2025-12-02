@@ -1,47 +1,32 @@
-<div class="carousel-page-container">
-  <h1 class="page-title">Image Carousel</h1>
+<div class="carousel-wrapper">
+  <div class="carousel-card">
+    <div class="carousel">
+      <!-- image$ utilisé directement avec l'async pipe -->
+      <img
+        [src]="image$ | async"
+        [style.width]="imageWidth"
+        [style.height]="imageHeight"
+        class="carousel-image"
+        alt="carousel image"
+      />
+    </div>
 
-  <div class="carousel-section">
-    <app-image-carousel
-      [images]="images"
-      [intervalTime]="intervalTime()"
-      [imageWidth]="imageWidth()"
-      [imageHeight]="imageHeight()"
-    ></app-image-carousel>
 
     <div class="controls">
-      <div class="control-group">
-        <label>Intervalle (ms):</label>
-        <input
-          type="number"
-          min="500"
-          max="5000"
-          step="100"
-          [value]="intervalTime()"
-          (change)="updateInterval($event)"
-        />
-        <span class="current-value">{{ intervalTime() }}ms</span>
-      </div>
+      <label class="control-item">
+        Interval (ms)
+        <input type="number" [value]="intervalTime" (change)="updateInterval($event)" />
+      </label>
 
-      <div class="control-group">
-        <label>Largeur:</label>
-        <input
-          type="text"
-          [value]="imageWidth()"
-          (change)="updateWidth($event)"
-        />
-        <span class="current-value">{{ imageWidth() }}</span>
-      </div>
+      <label class="control-item">
+        Width
+        <input type="text" [(ngModel)]="imageWidth" />
+      </label>
 
-      <div class="control-group">
-        <label>Hauteur:</label>
-        <input
-          type="text"
-          [value]="imageHeight()"
-          (change)="updateHeight($event)"
-        />
-        <span class="current-value">{{ imageHeight() }}</span>
-      </div>
+      <label class="control-item">
+        Height
+        <input type="text" [(ngModel)]="imageHeight" />
+      </label>
     </div>
   </div>
 </div>

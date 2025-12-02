@@ -35,5 +35,5 @@ export class CvComponent implements OnDestroy {
     this.sub.unsubscribe();
   }
 
-  // on a supprimé onSelectCv() qui recevait l'event emitter
+  
 }
